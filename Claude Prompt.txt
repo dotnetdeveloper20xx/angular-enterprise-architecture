@@ -1,0 +1,102 @@
+You are a senior Angular architect, UI engineer, and hands-on mentor. Your job is to design ONE advanced, enterprise-grade Angular application (latest stable Angular version) that intentionally showcases “hard UI” patterns and merges the following 10 concepts into a single coherent product suite:
+
+1) Workspace File Manager + Previewer
+2) Design System Playground (theming + tokens + component gallery)
+3) Media Library + Gallery Curation Tool
+4) Kanban + Timeline Hybrid
+5) Log Viewer / Observability Console
+6) Knowledge Base Editor (docs/wiki)
+7) Admin Console for Multi-Tenant App (roles/permissions/audit)
+8) Email/Case Triage Console
+9) Dataset Explorer (CSV/JSON viewer + profiling)
+10) Form Builder Studio (drag-drop schema designer + preview)
+
+Critical requirements:
+- This must feel like ONE real internal tool suite (a unified product), not 10 disconnected mini-apps. Establish a single domain narrative that naturally connects all modules through shared entities, shared workflows, and shared UI shell.
+- Target the latest Angular version and modern Angular patterns: standalone components, functional providers, route-level code splitting, Signals (signal(), computed(), effect()), signal-based inputs (where applicable), and the newest recommended template/control-flow syntax.
+- State management must reflect industry best practices today. Use Signals as the primary local state mechanism, and recommend a scalable global strategy:
+  - Prefer NgRx SignalStore (or an equivalent signal-first store approach) for shared app state.
+  - Use RxJS intentionally for async workflows (effects, streams, cancellation, pagination) and interop with Signals.
+  - Use ComponentStore/NgRx where justified, but avoid outdated patterns or unnecessary boilerplate.
+  - Be explicit about: state boundaries, store per feature, entity management, selectors/computed signals, effect patterns, and how UI events flow to state updates.
+- This must be buildable without a real backend: use mocked APIs, local JSON, IndexedDB persistence, and Web Workers for heavy tasks. Architect the data layer as if a backend can be swapped in later (clean service layer + interfaces).
+- The output must also act as mentoring material for a junior developer: you must produce developer guides as Markdown (.md) files focusing on “What / Why / How”, with examples and rationale, not just instructions.
+
+Constraints:
+- Use Angular Material or a modern headless/UI library (you choose) but ensure accessibility-first UI.
+- Include virtualization (for 10k–100k rows), drag-and-drop, keyboard shortcuts, context menus, docking/split panes, tabbed workspaces, and a command palette.
+- Provide an incremental build plan (MVP → v1 → v2) with acceptance criteria, so implementation is realistic.
+
+Deliverables (must be detailed and implementation-ready):
+
+A) Product concept (unified narrative)
+- App name, 2–3 sentence pitch, target users, and the single storyline tying all 10 modules together.
+- “Portfolio-elite” proof points (specific UI/engineering reasons).
+
+B) Information architecture + routing
+- Left navigation, top bar, tenant/user switcher, global search, notifications.
+- Route map (URLs) and deep-linking rules, including how tabbed workspaces restore from URL/session state.
+- Lazy-loaded feature areas and route-level providers.
+
+C) Workspace shell (core UI layout system)
+- Define a professional “IDE-like” shell: resizable split panes, dockable panels (Explorer, Inspector, Activity, Logs), tabbed workspace with pinned tabs and unsaved indicators.
+- Provide a robust workspace model: tab/panel data structures, persistence, restore session, open in split view, drag-to-dock behavior.
+- Keyboard system: keymap strategy + command palette (Ctrl/Cmd+K) + focus management.
+
+D) Module designs (integrate all 10)
+For EACH module, provide:
+- Primary screens and exact pane/tab layout (what goes where).
+- At least 8 “hard UI” features per module (avoid repeating the same feature list across modules unless truly foundational).
+- Key components (named) and responsibilities.
+- State design: what is local signals vs feature store vs shared store; entity collections; computed selectors; effects; derived state.
+- Error/empty/loading states (with skeletons).
+- Accessibility requirements (ARIA patterns: treeview, tabs, dialogs, menus, grid, drag-drop; and keyboard navigation).
+
+E) Shared systems (cross-cutting architecture)
+- Unified “File/Asset” model shared across Explorer, Knowledge Base, Media, Dataset Explorer, Form Builder.
+- Search indexing strategy (client-side) with facets/filters/highlights; explain what runs in a Web Worker and why.
+- Multi-tenancy + permissions: roles matrix, feature flags, and UI authorization (hide vs disable vs route guard).
+- Design System Playground: tokens, theme switch, component preview, a11y checks, and how tokens flow into styling.
+- Activity/Audit log, notifications, and background job simulation.
+
+F) Data + mock backend plan
+- Provide TypeScript interfaces for: Tenant, User, Role, FileNode, Document, MediaAsset, Case, TaskCard, TimelineItem, Dataset, LogEvent, FormSchema.
+- Mock API design (endpoints, pagination, cursor loading, filtering, sorting).
+- IndexedDB persistence strategy (what is persisted, versioning, migrations, and session restore).
+
+G) Performance engineering plan
+- Virtualization strategy for lists, grids, trees.
+- Change detection strategy (and why), zoneless considerations if relevant, and signal-driven rendering boundaries.
+- Memoization boundaries, trackBy strategy, and handling large datasets while keeping UI responsive.
+
+H) Testing + quality
+- Unit tests (Jest/Karma choice), component tests, and e2e tests (Cypress/Playwright).
+- State testing strategy for signal stores and effects.
+- Accessibility testing approach and linting/formatting recommendations.
+
+I) Build roadmap
+- MVP (2–3 weeks): the smallest slice that still looks “enterprise” with the workspace shell + 2 flagship modules.
+- v1: expand to all modules with consistent patterns.
+- v2: polish (offline mode, import/export, plugin architecture, audit completeness).
+- For each phase: checklist + acceptance criteria.
+
+J) Output as a “Developer Docs Pack” (Markdown files)
+Generate the following .md files (include headings and bullet structure, written as mentoring material for a junior dev, using What/Why/How and examples):
+1) README.md (what the product is, how to run, key commands)
+2) ARCHITECTURE.md (module boundaries, routing, data layer, workspace model)
+3) STATE_MANAGEMENT.md (signals, store strategy, effects, entity patterns, dos/don’ts)
+4) UI_SHELL.md (split panes, docking, tabs, command palette, keyboard/focus)
+5) DATA_LAYER.md (mock API, caching, IndexedDB, workers, pagination)
+6) PERFORMANCE.md (virtualization, rendering strategy, profiling checklist)
+7) ACCESSIBILITY.md (ARIA patterns used and keyboard contracts)
+8) TESTING.md (unit/component/e2e strategy + examples)
+9) CONTRIBUTING.md (standards, naming conventions, PR checklist)
+
+Formatting rules:
+- Start with a one-page “Top-level blueprint” summary.
+- Then provide sections A–I.
+- Then output the “Developer Docs Pack” as clearly separated Markdown file contents, each labeled with its filename.
+- Be concrete: name components, outline state shapes, show example interactions, and justify choices in “Why” sections.
+- Before finalizing, run a “coherence check” listing 10 specific ways the modules behave like one product (shared models, shared workflows, cross-module deep links, shared workspace shell, consistent state patterns, etc.).
+
+ONE LAST THING, I WOULD LOVE TO COMPETE WITH https://telerik.github.io/kendo-angular/personal-finance-app/#/personal-finance-app/analytics
