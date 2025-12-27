@@ -855,9 +855,9 @@ Free to use for learning, portfolios, and commercial projects.
 - **Documentation**: Start with [BLUEPRINT.md](BLUEPRINT.md)
 - **Issues**: [GitHub Issues](https://github.com/yourusername/nexus-studio/issues)
 - **Discussions**: [GitHub Discussions](https://github.com/yourusername/nexus-studio/discussions)
-- **Author**: [Your Name](https://github.com/yourusername)
-- **LinkedIn**: [Your LinkedIn](https://linkedin.com/in/yourprofile)
-- **Portfolio**: [Your Portfolio](https://yourwebsite.com)
+- **Author**: [Your Name](https://github.com/dotnetdeveloper20xx)
+- **LinkedIn**: [Your LinkedIn](https://www.linkedin.com/in/faz-ahmed-18186027/)
+- **Portfolio**: [Your Portfolio](https://dotnetdeveloper.co.uk/)
 
 ---
 
